@@ -24,7 +24,7 @@ class MainWindow(QWidget):
 	def show_window(self):
 		# widgets options
 		self.setGeometry(180, 60, 400, 240)
-		self.setWindowTitle('Gravitacja')
+		self.setWindowTitle('Grawitacja')
 
 		self.start = QPushButton("START", self)
 		self.start.move(10, 10)
@@ -56,6 +56,10 @@ class MainWindow(QWidget):
 			self.options = SimulationOptions()
 			self.stop.setEnabled(True)
 			self.parameters_board.setEnabled(False)
+			try:
+				Gravitation.dt = SimulationOptions.init_dt
+			except AttributeError:
+				pass
 
 	def parameters_area(self):
 		ParameterSettings()
@@ -286,6 +290,8 @@ class ParameterSettings(MainWindow, Data):
 			self.del_data_fields()
 			self.bodies_number.setCurrentIndex(1)
 			self.create_values()
+			SimulationOptions.init_dt = 4000
+			SimulationOptions.max_dt = 800000
 			# ascribe bodies
 			for i in range(self.PARAMETERS_NUMBER):
 				self.parameters_values[0][i].setText(self.bodies_data(1, i))
@@ -294,6 +300,8 @@ class ParameterSettings(MainWindow, Data):
 			self.del_data_fields()
 			self.bodies_number.setCurrentIndex(1)
 			self.create_values()
+			SimulationOptions.init_dt = 2000
+			SimulationOptions.max_dt = 200000
 			# ascribe bodies
 			for i in range(self.PARAMETERS_NUMBER):
 				self.parameters_values[0][i].setText(self.bodies_data(4, i))
@@ -302,6 +310,8 @@ class ParameterSettings(MainWindow, Data):
 			self.del_data_fields()
 			self.bodies_number.setCurrentIndex(1)
 			self.create_values()
+			SimulationOptions.init_dt = 8000
+			SimulationOptions.max_dt = 600000
 			# ascribe bodies
 			for i in range(self.PARAMETERS_NUMBER):
 				self.parameters_values[0][i].setText(self.bodies_data(7, i))
@@ -310,6 +320,8 @@ class ParameterSettings(MainWindow, Data):
 			self.del_data_fields()
 			self.bodies_number.setCurrentIndex(4)
 			self.create_values()
+			SimulationOptions.init_dt = 120
+			SimulationOptions.max_dt = 120000
 			# ascribe bodies
 			for i in range(self.PARAMETERS_NUMBER):
 				self.parameters_values[0][i].setText(self.bodies_data(10, i))
@@ -321,6 +333,8 @@ class ParameterSettings(MainWindow, Data):
 			self.del_data_fields()
 			self.bodies_number.setCurrentIndex(2)
 			self.create_values()
+			SimulationOptions.init_dt = 2000
+			SimulationOptions.max_dt = 80000
 			# ascribe bodies
 			for i in range(self.PARAMETERS_NUMBER):
 				self.parameters_values[0][i].setText(self.bodies_data(16, i))
@@ -352,23 +366,25 @@ class ParameterSettings(MainWindow, Data):
 
 class SimulationOptions(MainWindow):
 
+	init_dt = 4000
+	max_dt = 400000
+
 	def __init__(self, parent=None):
 		super().__init__(parent)
 		self.step_slider = None
 		self.trajectory_chb = None
 		self.algorithm_box = None
-		self.init_dt = 4000
 		self.show_window()
 
 	def simulation_settings(self):
 		self.step_slider = QSlider(Qt.Horizontal, self)
 		self.step_slider.setMinimum(1)
-		self.step_slider.setMaximum(400000)
+		self.step_slider.setMaximum(self.max_dt)
 		self.step_slider.setValue(self.init_dt)
 		self.step_slider.move(100, 40)
 		self.step_slider.resize(450, 40)
 		self.step_slider.setTickPosition(QSlider.TicksBelow)
-		self.step_slider.setTickInterval(2000)
+		self.step_slider.setTickInterval(int((self.max_dt-self.init_dt)/100))
 		self.step_slider.valueChanged.connect(lambda: self.step())
 
 		self.trajectory_chb = QCheckBox("RYSUJ TRAJEKTORIE", self)
@@ -383,8 +399,8 @@ class SimulationOptions(MainWindow):
 		self.algorithm_box.resize(300, 30)
 		self.algorithm_box.addItems(
 			[
-				'leapfrog (skokowy)',
-				'velocity (prędkościowy)'
+				'velocity (prędkościowy)',
+				'leapfrog (skokowy)'
 			]
 		)
 		self.algorithm_box.currentIndexChanged.connect(self.change_algorithm)
@@ -400,8 +416,11 @@ class SimulationOptions(MainWindow):
 			"Pamięta! Zwiększenie kroku czasowego przyspiesza symulację, ale"
 			" zwiększa błąd. Dla układów o krótkim \nokresie obiegu "
 			"(np księżyce Jowisza) można zaobserwować jak stopniowe zwiększanie"
-			" kroku sprawi, że \ntrajektorie 'rozjadą się'. Algorytm Verleta "
-			"jest jednak stabilny i błędy nie będą się nawarstwiać!",
+			" kroku sprawi, że \ntrajektorie rozjadą się, a planeta zgubi"
+			"wewnętrzne księżyce. Algorytm Verleta jest jednak stabilny i "
+			"niewielkie\n                                                     "
+			"                                                           "
+			"błędy nie będą się nawarstwiać!",
 			self
 		)
 		mistake_label.move(10, 90)
@@ -433,13 +452,14 @@ class SimulationOptions(MainWindow):
 		self.setGeometry(600, 30, 650, 250)
 		self.setWindowTitle('Ustawienia symulacji')
 		self.simulation_settings()
+		print(self.init_dt)
 		self.show()
 
 
 class Gravitation(SimulationOptions, Positions):
 
 	parameters_num = Positions.PAR_NUMBER
-	algorithm_kind = 'leapfrog'
+	algorithm_kind = 'velocity'
 	dt = 1000
 	
 	# size limits of painting bodies
