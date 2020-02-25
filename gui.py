@@ -417,7 +417,7 @@ class SimulationOptions(MainWindow):
 			" zwiększa błąd. Dla układów o krótkim \nokresie obiegu "
 			"(np księżyce Jowisza) można zaobserwować jak stopniowe zwiększanie"
 			" kroku sprawi, że \ntrajektorie rozjadą się, a planeta zgubi"
-			"wewnętrzne księżyce. Algorytm Verleta jest jednak stabilny i "
+			" wewnętrzne księżyce. Algorytm Verleta jest jednak stabilny i "
 			"niewielkie\n                                                     "
 			"                                                           "
 			"błędy nie będą się nawarstwiać!",
@@ -452,7 +452,6 @@ class SimulationOptions(MainWindow):
 		self.setGeometry(600, 30, 650, 250)
 		self.setWindowTitle('Ustawienia symulacji')
 		self.simulation_settings()
-		print(self.init_dt)
 		self.show()
 
 
