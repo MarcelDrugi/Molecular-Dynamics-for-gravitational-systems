@@ -1,0 +1,28 @@
+Algorytmy całkujące równania Newtona dzieli się w urposzczeniu na dwie
+podstawowe grupy.
+
+1). Algorytmy stabilne - to takie algorytmy gdzie błąd
+obliczeń wynikający z rozmiaru kroku czasowego nie zwiększa się
+w czasie. Nadają się one do modelowania ruchu w długich okresach.
+
+2). Algorytmy niestabilne - to takie algorytmy gdzie początkowy
+błąd obliczeń narasta wraz z wykonywaniem kolejnych kroków czasowych.
+Algorytmy takie zawodzą w dłuższych okresach, jeśli nie kontrolujemy rozmiaru
+kroku czasowego.
+
+Do algorytmów stabilnych zaliczamy różne wersje algorytmu Verleta,
+do niestabilnych algorytm Eulera oraz niektóre jego modyfikacje (np.
+algorytmy Rungego-Kutty) w postaciach jawmych.
+
+PRZYKŁAD. Algorytm Rungego-Kutty IV-tego rzędu, choć stosunkowo dokładny,
+nie jest bezwarunkowo stabilny. Wybierz układ z niewielkim okresem
+obiegu (np. Ziemia - Księżyc) i włącz rysowanie trajektorii.
+Dla algorytmu R-K stopniowe zawiększanie kroku czasowego spowoduje,
+że w pewnym momencie błąd zacznie się nawarstwiać aż finalnie układ
+"rozpadnie się".
+Powstórz eksperyment dla algorytmu Verleta. Błąd będzie rósł wraz z
+rozmiarem kroku czasowego, ale nie będzie narstał w czasie.
+
+Jeszcze wyraźniej będzie to widoczne w przypadku algorytmu Eulera-Cromera,
+który choć bardzo prosty, jest stabilny dla układów oscylacyjnych. Będzie
+on generował duże błędy, które jednak pozostaną stabilne w czasie.
