@@ -8,7 +8,7 @@ Newton's equations
 | Motion equations are integrated using two variants of
 | Verlet Algorithm (Velocity Verlet and Leapfrog Verlet) and
 | two extensions of Euler method (Runge–Kutta fourth-order method
-| and Euler-Cromer Method). Own algorithm implementations.
+| and Euler-Cromer Method). Own algorithms implementations.
 | 
 | Three of these algorithms are stable for a fixed time-step that 
 | allows model in long time with sufficient performance and a constant 
