@@ -447,7 +447,7 @@ class SimulationOptions(QWidget):
 
         dt_font = QFont("Monospace", 12, QFont.Bold)
         dt_label = QLabel(
-            "Wybierz krok czasowy (wpływa na tempo wizualizacji): ", self)
+            "Wybierz krok czasowy (wpływa na błąd oraz tempo wizualizacji): ", self)
         dt_label.move(70, 10)
         dt_label.setFont(dt_font)
 
