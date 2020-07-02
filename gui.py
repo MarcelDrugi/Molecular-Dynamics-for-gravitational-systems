@@ -418,7 +418,7 @@ class SimulationOptions(QWidget):
         self.step_slider.setMinimum(1)
         self.step_slider.setMaximum(self.max_dt)
         self.step_slider.setValue(self.init_dt)
-        self.step_slider.move(50, 40)
+        self.step_slider.move(30, 40)
         self.step_slider.resize(450, 40)
         self.step_slider.setTickPosition(QSlider.TicksBelow)
         self.step_slider.setTickInterval(
@@ -448,14 +448,14 @@ class SimulationOptions(QWidget):
         dt_font = QFont("Monospace", 12, QFont.Bold)
         dt_label = QLabel(
             "Wybierz krok czasowy (wpływa na błąd oraz tempo wizualizacji): ", self)
-        dt_label.move(70, 10)
+        dt_label.move(35, 10)
         dt_label.setFont(dt_font)
 
         self.dt_size_label = QLabel(
             'dt = ' + str(self.step_slider.value()) + ' [s]',
             self
         )
-        self.dt_size_label.move(530, 40)
+        self.dt_size_label.move(495, 40)
         self.dt_size_label.resize(120, 30)
         self.dt_size_label.setFont(dt_font)
 
