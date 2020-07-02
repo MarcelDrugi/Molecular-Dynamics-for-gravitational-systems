@@ -1,7 +1,7 @@
 class Data:
     def __init__(self):
-        self.bodies_path = 'gravitational_systems/data/bodies_data.txt'
-        self.algorithm_info_path = 'gravitational_systems/data/info.txt'
+        self.bodies_path = 'data/bodies_data.txt'
+        self.algorithm_info_path = 'data/info.txt'
 
     def bodies_data(self, body_nr, parameter_nr):
         with open(self.bodies_path, 'r') as file:
