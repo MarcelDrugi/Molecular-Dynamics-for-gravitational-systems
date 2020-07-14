@@ -1,5 +1,8 @@
 venv
-.idea/shelf/
-.idea/*.iws
-.idea/workspace.xml
-.idea/tasks.xml
+grav/.idea/shelf/
+grav/.idea/*.iws
+grav/.idea/workspace.xml
+grav/.idea/tasks.xml
+*/__pycache__
+**/__pycache__
+

@@ -1,7 +1,11 @@
+import os
+
+
 class Data:
     def __init__(self):
-        self.bodies_path = 'data/bodies_data.txt'
-        self.algorithm_info_path = 'data/info.txt'
+        place = os.path.dirname(os.path.abspath(__file__))
+        self.bodies_path = place + '/bodies_data.txt'
+        self.algorithm_info_path = place + '/info.txt'
 
     def bodies_data(self, body_nr, parameter_nr):
         with open(self.bodies_path, 'r') as file:

@@ -11,7 +11,7 @@
 ###### 5. Install requirements:
     pip3 install -r  requirements.txt
 ###### 6. Run app:
-    python3 __main__.py 
+    python3 grav
 
 
 ## 
