@@ -14,9 +14,9 @@ Do algorytmów stabilnych zaliczamy różne wersje algorytmu Verleta,
 do niestabilnych algorytm Eulera oraz niektóre jego modyfikacje (np.
 algorytmy Rungego-Kutty) w postaciach jawmych.
 
-PRZYKŁAD. Algorytm Rungego-Kutty IV-tego rzędu, choć stosunkowo dokładny,
-nie jest bezwarunkowo stabilny. Wybierz układ z niewielkim okresem
-obiegu (np. Ziemia - Księżyc) i włącz rysowanie trajektorii.
+PRZYKŁAD: Algorytm Rungego-Kutty IV-tego rzędu, choć stosunkowo
+dokładny, nie jest bezwarunkowo stabilny. 
+Wybierz układ z niewielkim okresem obiegu (np. Ziemia - Księżyc) i włącz rysowanie trajektorii.
 Dla algorytmu R-K stopniowe zawiększanie kroku czasowego spowoduje,
 że w pewnym momencie błąd zacznie się nawarstwiać aż finalnie układ
 "rozpadnie się".

@@ -456,7 +456,7 @@ class SimulationOptions(QWidget):
             self
         )
         self.dt_size_label.move(495, 40)
-        self.dt_size_label.resize(120, 30)
+        self.dt_size_label.resize(190, 30)
         self.dt_size_label.setFont(dt_font)
 
         self.algorithm_info.move(340, 125)
@@ -495,7 +495,7 @@ class SimulationOptions(QWidget):
 
     def algorithm_info_box(self):
         text = Data().algorithm_info_data()
-        QMessageBox.information(self, 'Algorytmy', text)
+        QMessageBox.about(self, 'Algorytmy', text)
 
     def show_window(self):
         self.setGeometry(600, 30, 650, 250)
